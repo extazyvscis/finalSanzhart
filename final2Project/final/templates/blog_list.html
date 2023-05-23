@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="../../static/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Блог</title>
+</head>
+<body>
+  <h2 class="blog__title">
+    Блог приложение
+  </h2>
+  <main class="main">
+    <div class="buttons">
+      <button>
+        <span class="circle1"></span>
+        <span class="circle2"></span>
+        <span class="circle3"></span>
+        <span class="circle4"></span>
+        <span class="circle5"></span>
+        <span class="text"><a href="{% url 'login' %}" class="btn">Login</a></span>
+      </button>
+      <button>
+        <span class="circle1"></span>
+        <span class="circle2"></span>
+        <span class="circle3"></span>
+        <span class="circle4"></span>
+        <span class="circle5"></span>
+        <span class="text"><a href="{% url 'register' %}" class="btn">Register</a></span>
+      </button>
+      <button><a href="{% url 'add_post' %}">Добавить пост</a></button>
+    </div>
+    <div class="card">
+      {% for post in posts %}
+        <h2><a href="{% url 'blog_detail' post.id %}">{{ post.title }}</a></h2>
+        <p>{{ post.pub_date }}</p>
+        <img src="{{ post.photo.url }}" alt="Post Photo">
+      {% endfor %}
+    </div>
+  </main>
+</body>
+</html>
